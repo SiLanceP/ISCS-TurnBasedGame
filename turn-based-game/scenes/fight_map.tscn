@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cwf2qs70xlk2b"]
+
+[node name="Fight Map" type="Node2D" unique_id=263405425]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=633065901]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=201604220]
