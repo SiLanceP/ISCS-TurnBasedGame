@@ -1,0 +1,249 @@
+[gd_scene format=3 uid="uid://hsf1mgo8bihr"]
+
+[ext_resource type="PackedScene" uid="uid://boloc60skoui4" path="res://scenes/knight.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bodgnvm31gwpk" path="res://scenes/healer.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://da4xu651t45m0" path="res://scenes/mage.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://cn2nuvtbxjk1o" path="res://scenes/skeleton.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bbfm8hisajjbg" path="res://scenes/orc.tscn" id="5"]
+[ext_resource type="Script" uid="uid://dc3p46fj3rf7g" path="res://scripts/battle_manager.gd" id="6"]
+
+[node name="Battle" type="Node2D" unique_id=1234567890]
+script = ExtResource("6")
+
+[node name="Players" type="Node2D" parent="." unique_id=1234567891]
+
+[node name="Knight" parent="Players" unique_id=1234567892 instance=ExtResource("1")]
+position = Vector2(160, 310)
+scale = Vector2(3, 3)
+
+[node name="HealthBar" type="Control" parent="Players/Knight" unique_id=1234567897]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 20.0
+
+[node name="HealthBarBackground" type="ColorRect" parent="Players/Knight/HealthBar" unique_id=1234567898]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 20.0
+offset_bottom = 10.0
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="HealthBarFill" type="ColorRect" parent="Players/Knight/HealthBar" unique_id=1234567899]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 20.0
+offset_bottom = 10.0
+color = Color(0, 1, 0, 1)
+
+[node name="Healer" parent="Players" unique_id=1234567893 instance=ExtResource("2")]
+position = Vector2(68, 454.00003)
+scale = Vector2(3, 3)
+
+[node name="HealthBar" type="Control" parent="Players/Healer" unique_id=1234567900]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 20.0
+
+[node name="HealthBarBackground" type="ColorRect" parent="Players/Healer/HealthBar" unique_id=1234567901]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 20.0
+offset_bottom = 10.0
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="HealthBarFill" type="ColorRect" parent="Players/Healer/HealthBar" unique_id=1234567902]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 20.0
+offset_bottom = 10.0
+color = Color(0, 1, 0, 1)
+
+[node name="Mage" parent="Players" unique_id=1234567910 instance=ExtResource("3")]
+position = Vector2(216, 548)
+scale = Vector2(3, 3)
+
+[node name="HealthBar" type="Control" parent="Players/Mage" unique_id=1234567903]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 20.0
+
+[node name="HealthBarBackground" type="ColorRect" parent="Players/Mage/HealthBar" unique_id=1234567904]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 20.0
+offset_bottom = 10.0
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="HealthBarFill" type="ColorRect" parent="Players/Mage/HealthBar" unique_id=1234567905]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 20.0
+offset_bottom = 10.0
+color = Color(0, 1, 0, 1)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1234567894]
+
+[node name="Skeleton" parent="Enemies" unique_id=1234567895 instance=ExtResource("4")]
+position = Vector2(472, 340)
+scale = Vector2(3, 3)
+
+[node name="HealthBar" type="Control" parent="Enemies/Skeleton" unique_id=1234567906]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 20.0
+
+[node name="HealthBarBackground" type="ColorRect" parent="Enemies/Skeleton/HealthBar" unique_id=1234567907]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 20.0
+offset_bottom = 10.0
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="HealthBarFill" type="ColorRect" parent="Enemies/Skeleton/HealthBar" unique_id=1234567908]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 20.0
+offset_bottom = 10.0
+color = Color(0, 1, 0, 1)
+
+[node name="Orc" parent="Enemies" unique_id=1234567896 instance=ExtResource("5")]
+position = Vector2(395.00003, 473.00003)
+scale = Vector2(3, 3)
+
+[node name="HealthBar" type="Control" parent="Enemies/Orc" unique_id=1234567909]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 20.0
+
+[node name="HealthBarBackground" type="ColorRect" parent="Enemies/Orc/HealthBar" unique_id=1234567910]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 20.0
+offset_bottom = 10.0
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="HealthBarFill" type="ColorRect" parent="Enemies/Orc/HealthBar" unique_id=1234567911]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 20.0
+offset_bottom = 10.0
+color = Color(0, 1, 0, 1)
+
+[node name="Control" type="VBoxContainer" parent="." unique_id=1234567898]
+custom_minimum_size = Vector2(520, 280)
+
+[node name="StatusLabel" type="Label" parent="Control" unique_id=1234567899]
+layout_mode = 2
+text = "Waiting..."
+
+[node name="CommandContainer" type="HBoxContainer" parent="Control" unique_id=1234567900]
+layout_mode = 2
+
+[node name="TargetContainer" type="HBoxContainer" parent="Control" unique_id=1234567903]
+layout_mode = 2
+
+[node name="ConfirmButton" type="Button" parent="Control" unique_id=1234567906]
+custom_minimum_size = Vector2(100, 35)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Confirm"
+
+[node name="LogLabel" type="RichTextLabel" parent="Control" unique_id=1234567907]
+custom_minimum_size = Vector2(500, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CommandContainer#CommandLabel" type="Label" parent="." unique_id=1234567901]
+offset_left = 578.0
+offset_top = 9.0
+offset_right = 658.0
+offset_bottom = 32.0
+text = "Command"
+
+[node name="CommandContainer#CommandOption" type="OptionButton" parent="." unique_id=1234567902]
+custom_minimum_size = Vector2(200, 30)
+offset_left = 321.0
+offset_top = 41.0
+offset_right = 521.0
+offset_bottom = 71.0
+
+[node name="TargetContainer#TargetLabel" type="Label" parent="." unique_id=1234567904]
+offset_left = 330.0
+offset_top = 10.0
+offset_right = 380.0
+offset_bottom = 33.0
+text = "Target"
+
+[node name="TargetContainer#TargetOption" type="OptionButton" parent="." unique_id=1234567905]
+custom_minimum_size = Vector2(200, 30)
+offset_left = 576.0
+offset_top = 42.0
+offset_right = 776.0
+offset_bottom = 72.0

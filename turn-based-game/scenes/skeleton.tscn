@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cn2nuvtbxjk1o"]
 
+[ext_resource type="Script" path="res://scripts/enemy_unit.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bcvs3ndng5chw" path="res://assets/Tiny RPG pack/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton Archer/Skeleton Archer with shadows/Skeleton Archer-Attack.png" id="1_bnirc"]
 [ext_resource type="Texture2D" uid="uid://u7q2s8x6vilg" path="res://assets/Tiny RPG pack/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton Archer/Skeleton Archer with shadows/Skeleton Archer-Death.png" id="2_5pgwy"]
 [ext_resource type="Texture2D" uid="uid://7k4ywwabjm21" path="res://assets/Tiny RPG pack/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton Archer/Skeleton Archer with shadows/Skeleton Archer-Hurt.png" id="3_ssl1b"]
@@ -193,6 +194,15 @@ animations = [{
 radius = 8.0
 
 [node name="Skeleton" type="CharacterBody2D" unique_id=1317522365]
+script = ExtResource("1")
+unit_name = "Skeleton"
+behavior_type = "Trickster"
+max_hp = 50
+attack = 12
+defense = 4
+speed = 9
+crit_chance = 0.08
+hit_chance = 0.9
 texture_filter = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=964004883]

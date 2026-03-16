@@ -282,7 +282,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_6cel6"]
 radius = 7.0
 
-[node name="Archer" type="CharacterBody2D" unique_id=177472403]
+[node name="Archer" type="KinematicBody2D" unique_id=177472403]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=940486801]
 texture_filter = 1
