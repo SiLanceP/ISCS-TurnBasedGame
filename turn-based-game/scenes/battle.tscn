@@ -15,9 +15,11 @@ script = ExtResource("6")
 [node name="Knight" parent="Players" unique_id=1234567892 instance=ExtResource("1")]
 position = Vector2(160, 310)
 scale = Vector2(3, 3)
+max_hp = 30
+defense = 5
 
 [node name="HealthBar" type="Control" parent="Players/Knight" unique_id=1234567897]
-layout_mode = 0
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -28,22 +30,16 @@ offset_bottom = 20.0
 
 [node name="HealthBarBackground" type="ColorRect" parent="Players/Knight/HealthBar" unique_id=1234567898]
 layout_mode = 0
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 20.0
 offset_bottom = 10.0
 color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="HealthBarFill" type="ColorRect" parent="Players/Knight/HealthBar" unique_id=1234567899]
 layout_mode = 0
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 20.0
 offset_bottom = 10.0
 color = Color(0, 1, 0, 1)
@@ -51,9 +47,11 @@ color = Color(0, 1, 0, 1)
 [node name="Healer" parent="Players" unique_id=1234567893 instance=ExtResource("2")]
 position = Vector2(68, 454.00003)
 scale = Vector2(3, 3)
+max_hp = 20
+defense = 2
 
 [node name="HealthBar" type="Control" parent="Players/Healer" unique_id=1234567900]
-layout_mode = 0
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -64,22 +62,16 @@ offset_bottom = 20.0
 
 [node name="HealthBarBackground" type="ColorRect" parent="Players/Healer/HealthBar" unique_id=1234567901]
 layout_mode = 0
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 20.0
 offset_bottom = 10.0
 color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="HealthBarFill" type="ColorRect" parent="Players/Healer/HealthBar" unique_id=1234567902]
 layout_mode = 0
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 20.0
 offset_bottom = 10.0
 color = Color(0, 1, 0, 1)
@@ -87,9 +79,10 @@ color = Color(0, 1, 0, 1)
 [node name="Mage" parent="Players" unique_id=1234567910 instance=ExtResource("3")]
 position = Vector2(216, 548)
 scale = Vector2(3, 3)
+max_hp = 25
 
 [node name="HealthBar" type="Control" parent="Players/Mage" unique_id=1234567903]
-layout_mode = 0
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -100,22 +93,16 @@ offset_bottom = 20.0
 
 [node name="HealthBarBackground" type="ColorRect" parent="Players/Mage/HealthBar" unique_id=1234567904]
 layout_mode = 0
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 20.0
 offset_bottom = 10.0
 color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="HealthBarFill" type="ColorRect" parent="Players/Mage/HealthBar" unique_id=1234567905]
 layout_mode = 0
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 20.0
 offset_bottom = 10.0
 color = Color(0, 1, 0, 1)
@@ -127,7 +114,7 @@ position = Vector2(472, 340)
 scale = Vector2(3, 3)
 
 [node name="HealthBar" type="Control" parent="Enemies/Skeleton" unique_id=1234567906]
-layout_mode = 0
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -138,22 +125,16 @@ offset_bottom = 20.0
 
 [node name="HealthBarBackground" type="ColorRect" parent="Enemies/Skeleton/HealthBar" unique_id=1234567907]
 layout_mode = 0
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 20.0
 offset_bottom = 10.0
 color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="HealthBarFill" type="ColorRect" parent="Enemies/Skeleton/HealthBar" unique_id=1234567908]
 layout_mode = 0
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 20.0
 offset_bottom = 10.0
 color = Color(0, 1, 0, 1)
@@ -163,7 +144,7 @@ position = Vector2(395.00003, 473.00003)
 scale = Vector2(3, 3)
 
 [node name="HealthBar" type="Control" parent="Enemies/Orc" unique_id=1234567909]
-layout_mode = 0
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -172,76 +153,70 @@ offset_top = 10.0
 offset_right = 10.0
 offset_bottom = 20.0
 
-[node name="HealthBarBackground" type="ColorRect" parent="Enemies/Orc/HealthBar" unique_id=1234567910]
+[node name="HealthBarBackground" type="ColorRect" parent="Enemies/Orc/HealthBar" unique_id=441575238]
 layout_mode = 0
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 20.0
 offset_bottom = 10.0
 color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="HealthBarFill" type="ColorRect" parent="Enemies/Orc/HealthBar" unique_id=1234567911]
 layout_mode = 0
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 20.0
 offset_bottom = 10.0
 color = Color(0, 1, 0, 1)
 
-[node name="Control" type="VBoxContainer" parent="." unique_id=1234567898]
+[node name="Control" type="VBoxContainer" parent="." unique_id=245317604]
 custom_minimum_size = Vector2(520, 280)
 
-[node name="StatusLabel" type="Label" parent="Control" unique_id=1234567899]
+[node name="StatusLabel" type="Label" parent="Control" unique_id=1352372754]
 layout_mode = 2
 text = "Waiting..."
 
-[node name="CommandContainer" type="HBoxContainer" parent="Control" unique_id=1234567900]
+[node name="CommandContainer" type="HBoxContainer" parent="Control" unique_id=1122299560]
 layout_mode = 2
 
-[node name="TargetContainer" type="HBoxContainer" parent="Control" unique_id=1234567903]
+[node name="TargetContainer" type="HBoxContainer" parent="Control" unique_id=484007512]
 layout_mode = 2
 
-[node name="ConfirmButton" type="Button" parent="Control" unique_id=1234567906]
+[node name="ConfirmButton" type="Button" parent="Control" unique_id=279547433]
 custom_minimum_size = Vector2(100, 35)
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 text = "Confirm"
 
-[node name="LogLabel" type="RichTextLabel" parent="Control" unique_id=1234567907]
+[node name="LogLabel" type="RichTextLabel" parent="Control" unique_id=1761643469]
 custom_minimum_size = Vector2(500, 110)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CommandContainer#CommandLabel" type="Label" parent="." unique_id=1234567901]
-offset_left = 578.0
+[node name="CommandContainer#CommandLabel" type="Label" parent="." unique_id=1028863066]
+offset_left = 320.0
 offset_top = 9.0
-offset_right = 658.0
+offset_right = 400.0
 offset_bottom = 32.0
 text = "Command"
 
-[node name="CommandContainer#CommandOption" type="OptionButton" parent="." unique_id=1234567902]
+[node name="CommandContainer#CommandOption" type="OptionButton" parent="." unique_id=2005221243]
 custom_minimum_size = Vector2(200, 30)
 offset_left = 321.0
 offset_top = 41.0
 offset_right = 521.0
 offset_bottom = 71.0
 
-[node name="TargetContainer#TargetLabel" type="Label" parent="." unique_id=1234567904]
-offset_left = 330.0
-offset_top = 10.0
-offset_right = 380.0
-offset_bottom = 33.0
+[node name="TargetContainer#TargetLabel" type="Label" parent="." unique_id=2064182324]
+offset_left = 582.0
+offset_top = 13.0
+offset_right = 632.0
+offset_bottom = 36.0
 text = "Target"
 
-[node name="TargetContainer#TargetOption" type="OptionButton" parent="." unique_id=1234567905]
+[node name="TargetContainer#TargetOption" type="OptionButton" parent="." unique_id=754543147]
 custom_minimum_size = Vector2(200, 30)
 offset_left = 576.0
 offset_top = 42.0
