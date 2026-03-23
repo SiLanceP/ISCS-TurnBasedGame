@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ct3p1iaktq3t0"]
 
+[ext_resource type="Script" uid="uid://sjgao73fim26" path="res://scripts/player_unit.gd" id="1_c85qa"]
 [ext_resource type="Texture2D" uid="uid://cgt0em1i1ixca" path="res://assets/Tiny RPG pack/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Archer/Archer with shadows/Archer-Attack01.png" id="1_ejvcm"]
 [ext_resource type="Texture2D" uid="uid://d0hfelklhaitj" path="res://assets/Tiny RPG pack/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Archer/Archer with shadows/Archer-Attack02.png" id="2_c85qa"]
 [ext_resource type="Texture2D" uid="uid://ds61xu7hpyieu" path="res://assets/Tiny RPG pack/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Archer/Archer with shadows/Archer-Hurt.png" id="3_vlvv2"]
@@ -90,6 +91,22 @@ region = Rect2(1000, 0, 100, 100)
 atlas = ExtResource("2_c85qa")
 region = Rect2(1100, 0, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_egq1k"]
+atlas = ExtResource("5_mak8i")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i0ur"]
+atlas = ExtResource("5_mak8i")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3of0"]
+atlas = ExtResource("5_mak8i")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at4ad"]
+atlas = ExtResource("5_mak8i")
+region = Rect2(300, 0, 100, 100)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_a88he"]
 atlas = ExtResource("3_vlvv2")
 region = Rect2(0, 0, 100, 100)
@@ -130,22 +147,6 @@ region = Rect2(400, 0, 100, 100)
 atlas = ExtResource("4_d71b8")
 region = Rect2(500, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_egq1k"]
-atlas = ExtResource("5_mak8i")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6i0ur"]
-atlas = ExtResource("5_mak8i")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c3of0"]
-atlas = ExtResource("5_mak8i")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_at4ad"]
-atlas = ExtResource("5_mak8i")
-region = Rect2(300, 0, 100, 100)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_ie7fr"]
 animations = [{
 "frames": [{
@@ -177,7 +178,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_3krgg")
 }],
 "loop": false,
-"name": &"Attack1",
+"name": &"attack1",
 "speed": 10.0
 }, {
 "frames": [{
@@ -218,8 +219,25 @@ animations = [{
 "texture": SubResource("AtlasTexture_wu5ei")
 }],
 "loop": false,
-"name": &"Attack2",
+"name": &"attack2",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egq1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6i0ur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3of0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_at4ad")
+}],
+"loop": false,
+"name": &"death",
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -235,7 +253,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_qps7j")
 }],
 "loop": false,
-"name": &"Hurt",
+"name": &"hurt",
 "speed": 7.0
 }, {
 "frames": [{
@@ -258,37 +276,21 @@ animations = [{
 "texture": SubResource("AtlasTexture_hr8ur")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
 "speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_egq1k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6i0ur")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c3of0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_at4ad")
-}],
-"loop": false,
-"name": &"death",
-"speed": 4.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6cel6"]
 radius = 7.0
 
-[node name="Archer" type="KinematicBody2D" unique_id=177472403]
+[node name="Archer" type="CharacterBody2D" unique_id=177472403]
+script = ExtResource("1_c85qa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=940486801]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ie7fr")
-animation = &"death"
-autoplay = "Idle"
+animation = &"attack1"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=590037666]
 shape = SubResource("CircleShape2D_6cel6")

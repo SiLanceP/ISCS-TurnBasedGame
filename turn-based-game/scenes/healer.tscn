@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bodgnvm31gwpk"]
 
-[ext_resource type="Script" path="res://scripts/player_unit.gd" id="1"]
+[ext_resource type="Script" uid="uid://sjgao73fim26" path="res://scripts/player_unit.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dgf8bo0pelue1" path="res://assets/Tiny RPG pack/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Priest/Priest with shadows/Priest-Attack.png" id="1_32hxe"]
 [ext_resource type="Texture2D" uid="uid://b2oig7f3keovq" path="res://assets/Tiny RPG pack/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Priest/Priest with shadows/Priest-Death.png" id="2_qfao8"]
 [ext_resource type="Texture2D" uid="uid://juc7du6m5qag" path="res://assets/Tiny RPG pack/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Priest/Priest with shadows/Priest-Heal.png" id="3_lbdlm"]
@@ -155,7 +155,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 9.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -242,16 +242,15 @@ animations = [{
 radius = 7.071068
 
 [node name="healer" type="CharacterBody2D" unique_id=227660117]
+texture_filter = 1
 script = ExtResource("1")
-unit_name = "Healer"
 role = "Healer"
-max_hp = 65
+unit_name = "Healer"
+max_hp = 85
 attack = 9
 defense = 4
-speed = 10
 crit_chance = 0.08
 hit_chance = 0.95
-texture_filter = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=107100509]
 sprite_frames = SubResource("SpriteFrames_phttw")

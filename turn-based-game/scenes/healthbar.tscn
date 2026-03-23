@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b58b2mf1wlq6t"]
+
+[ext_resource type="Texture2D" uid="uid://b4gmgteoh4csy" path="res://assets/Pixel Health Bar/04.png" id="1_8wl12"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wl12"]
+atlas = ExtResource("1_8wl12")
+region = Rect2(288, 128, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjxg4"]
+atlas = ExtResource("1_8wl12")
+region = Rect2(240, 128, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulkio"]
+atlas = ExtResource("1_8wl12")
+region = Rect2(192, 128, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8nn8"]
+atlas = ExtResource("1_8wl12")
+region = Rect2(144, 128, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25yk6"]
+atlas = ExtResource("1_8wl12")
+region = Rect2(96, 128, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05yto"]
+atlas = ExtResource("1_8wl12")
+region = Rect2(48, 128, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ugary"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wl12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjxg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulkio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8nn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25yk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05yto")
+}],
+"loop": false,
+"name": &"health",
+"speed": 5.0
+}]
+
+[node name="healthbar" type="AnimatedSprite2D" unique_id=1358683867]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ugary")
+animation = &"health"

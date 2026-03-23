@@ -60,8 +60,12 @@ func _take_turn() -> void:
 		log_message("Defeat... All party members have fallen.")
 		emit_signal("battle_ended", "lose")
 		return
-
+	if turn_queue.is_empty():
+		return
 	var unit = turn_queue.pop_front()
+	if not is_instance_valid(unit):
+		call_deferred("_take_turn")
+		return
 	if not unit.is_alive():
 		turn_queue.append(unit)
 		call_deferred("_take_turn")
@@ -75,14 +79,20 @@ func _take_turn() -> void:
 			target_option.disabled = false
 			
 		var selected = await prompt_player_action(unit)
+		if confirm_button: confirm_button.disabled = true
+		if command_option: command_option.disabled = true
+		if target_option: target_option.disabled = true
+		
 		if selected:
-			unit.perform_command(selected.id, selected.target, self)
+			await unit.perform_command(selected.id, selected.target, self)
 			await get_tree().create_timer(0.2).timeout
 	else: # an enemy
 		if command_option:
 			command_option.disabled = true
 		if target_option:
 			target_option.disabled = true
+		if confirm_button:
+			confirm_button.disabled = true
 			
 		if status_label:
 			status_label.text = "%s is taking its turn..." % unit.unit_name
@@ -91,10 +101,11 @@ func _take_turn() -> void:
 
 		var choice = unit.choose_action(players)
 		if choice:
-			unit.perform_command(choice.id, choice.target, self)
-			await get_tree().create_timer(0.2).timeout
+			await unit.perform_command(choice.id, choice.target, self)
+			await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(1.0).timeout
 		
-		if status_label:
+		"""if status_label:
 			status_label.text = "Enemy turn is over. Press Continue to continue."
 		
 		if confirm_button:
@@ -106,8 +117,9 @@ func _take_turn() -> void:
 			command_option.disabled = false
 		if target_option:
 			target_option.disabled = false
-
+	"""
 	turn_queue.append(unit)
+
 
 	if check_victory():
 		log_message("Victory! All enemies defeated.")
@@ -175,6 +187,7 @@ func prompt_player_action(player) -> Dictionary:
 
 	# Wait for confirm
 	if confirm_button:
+		confirm_button.disabled = false
 		await confirm_button.pressed
 
 	# Get selected command and target
@@ -209,10 +222,11 @@ func update_target_list(player, cmd) -> void:
 	
 	if cmd.target == "enemy":
 		for enemy in enemies:
-			if enemy.is_alive():
+			if is_instance_valid(enemy) and enemy.is_alive():
 				var idx = target_option.get_item_count()
 				target_option.add_item(enemy.unit_name)
 				target_option.set_item_metadata(idx, enemy)
+				
 		if target_option.get_item_count() == 0:
 			var idx = target_option.get_item_count()
 			target_option.add_item("<No targets>")

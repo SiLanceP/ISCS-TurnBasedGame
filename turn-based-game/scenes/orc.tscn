@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bbfm8hisajjbg"]
 
-[ext_resource type="Script" path="res://scripts/enemy_unit.gd" id="1"]
+[ext_resource type="Script" uid="uid://c738ckqyyvh40" path="res://scripts/enemy_unit.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://d0tkwn55q24am" path="res://assets/Tiny RPG pack/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Elite Orc/Elite Orc with shadows/Elite Orc-Attack03.png" id="1_s5mlm"]
 [ext_resource type="Texture2D" uid="uid://stppo15j25fc" path="res://assets/Tiny RPG pack/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Elite Orc/Elite Orc with shadows/Elite Orc-Death.png" id="2_nvs4g"]
 [ext_resource type="Texture2D" uid="uid://cygie6cq2klfe" path="res://assets/Tiny RPG pack/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Elite Orc/Elite Orc with shadows/Elite Orc-Hurt.png" id="3_xme4o"]
@@ -130,7 +130,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 9.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -194,21 +194,19 @@ animations = [{
 radius = 8.0
 
 [node name="Orc" type="CharacterBody2D" unique_id=923805919]
+texture_filter = 1
 script = ExtResource("1")
 unit_name = "Orc"
-behavior_type = "Aggressive"
 max_hp = 70
-attack = 16
+attack = 12
 defense = 8
 speed = 7
-crit_chance = 0.1
-hit_chance = 0.9
-texture_filter = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=956595876]
 sprite_frames = SubResource("SpriteFrames_5rwe6")
 animation = &"idle"
 autoplay = "idle"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1926683463]
 shape = SubResource("CircleShape2D_rodul")
