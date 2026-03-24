@@ -240,4 +240,4 @@ animations = [{
 [node name="effects" type="AnimatedSprite2D" unique_id=885341501]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_8n23q")
-animation = &"hit"
+animation = &"heal"

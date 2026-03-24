@@ -254,7 +254,7 @@ hit_chance = 0.95
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=107100509]
 sprite_frames = SubResource("SpriteFrames_phttw")
-animation = &"idle"
+animation = &"hurt"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2034295194]

@@ -7,7 +7,7 @@ func get_commands() -> Array:
 	var cmds = [
 		{"id": "attack", "name": "Attack", "target": "enemy"},
 		{"id": "defend", "name": "Defend", "target": "self"},
-		{"id": "charge", "name": "Charge", "target": "self"}
+		{"id": "charge", "name": "Charge", "target": "self"},
 	]
 	match role:
 		"Healer":
@@ -17,6 +17,7 @@ func get_commands() -> Array:
 		"Rogue":
 			cmds.append({"id": "item", "name": "Potion", "target": "ally"})
 		"Fighter":
-			# Fighter has only basic commands, but let's add a special ability
 			cmds.append({"id": "power_strike", "name": "Power Strike", "target": "enemy"})
+	if potion_count > 0:
+		cmds.append({"id": "item", "name": "Potion", "target": "ally"}) # add potion at the end
 	return cmds

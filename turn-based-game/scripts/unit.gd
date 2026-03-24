@@ -16,6 +16,7 @@ var hp: int
 var is_defending: bool = false
 var is_charging: bool = false
 var last_action: String = ""
+var potion_count: int = 1
 
 signal died
 signal health_changed(new_hp)
@@ -240,8 +241,19 @@ func heal_ally(target, battle):
 		$AnimatedSprite2D.play("idle")
 
 func use_item(target, battle):
+	if potion_count <= 0:
+		return
 	if not target or not target.is_alive():
 		return
+	potion_count -= 1
+	var effect_scene = load("res://scenes/effects.tscn")
+	var active_effect = null
+	if effect_scene:
+		active_effect = effect_scene.instantiate()
+		target.add_child(active_effect)
+		active_effect.position = Vector2(0, -2) 
+		active_effect.play("heal")
+		active_effect.animation_finished.connect(active_effect.queue_free)
 	var healed = target.heal(20)
 	battle.log_message("%s used a Potion on %s for %d HP." % [unit_name, target.unit_name, healed])
 	last_action = "item"
