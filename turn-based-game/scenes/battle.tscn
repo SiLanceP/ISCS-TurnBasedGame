@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://boloc60skoui4" path="res://scenes/knight.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bodgnvm31gwpk" path="res://scenes/healer.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://taskdqu0lfqn" path="res://assets/free-vampires-locations-battle-background-pack/PNG/2/throne room.png" id="2_yahae"]
 [ext_resource type="PackedScene" uid="uid://da4xu651t45m0" path="res://scenes/mage.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://dtsqffqfppn7l" path="res://scenes/hpbar.tscn" id="3_f4pi3"]
 [ext_resource type="PackedScene" uid="uid://cn2nuvtbxjk1o" path="res://scenes/skeleton.tscn" id="4"]
@@ -12,11 +13,17 @@
 [node name="Battle" type="Node2D" unique_id=1234567890]
 script = ExtResource("6")
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=929131872]
+offset_right = 1154.0
+offset_bottom = 649.0
+texture = ExtResource("2_yahae")
+expand_mode = 1
+
 [node name="Players" type="Node2D" parent="." unique_id=1234567891]
 position = Vector2(87, 4)
 
 [node name="Knight" parent="Players" unique_id=1234567892 instance=ExtResource("1")]
-position = Vector2(246, 347)
+position = Vector2(246, 382)
 scale = Vector2(3, 3)
 max_hp = 35
 defense = 9
@@ -26,6 +33,7 @@ offset_left = -18.666666
 offset_top = -23.333334
 offset_right = 20.333334
 offset_bottom = -11.333334
+metadata/_edit_use_anchors_ = true
 
 [node name="hplabel" type="Label" parent="Players/Knight" unique_id=1121057189]
 texture_filter = 1
@@ -37,7 +45,7 @@ theme_override_font_sizes/font_size = 5
 vertical_alignment = 2
 
 [node name="Healer" parent="Players" unique_id=1234567893 instance=ExtResource("2")]
-position = Vector2(141, 434)
+position = Vector2(141, 469)
 scale = Vector2(3, 3)
 max_hp = 20
 attack = 10
@@ -48,6 +56,7 @@ offset_left = -17.999998
 offset_top = -24.333332
 offset_right = 21.000002
 offset_bottom = -12.333332
+metadata/_edit_use_anchors_ = true
 
 [node name="hplabel" type="Label" parent="Players/Healer" unique_id=480395820]
 texture_filter = 1
@@ -57,9 +66,10 @@ offset_right = 24.0
 offset_bottom = -25.0
 theme_override_font_sizes/font_size = 5
 vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Mage" parent="Players" unique_id=1234567910 instance=ExtResource("3")]
-position = Vector2(242, 541)
+position = Vector2(242, 576)
 scale = Vector2(3, 3)
 max_hp = 25
 
@@ -68,6 +78,7 @@ offset_left = -18.666666
 offset_top = -23.0
 offset_right = 20.333334
 offset_bottom = -11.0
+metadata/_edit_use_anchors_ = true
 
 [node name="hplabel" type="Label" parent="Players/Mage" unique_id=1631789726]
 texture_filter = 1
@@ -77,12 +88,13 @@ offset_right = 22.666668
 offset_bottom = -23.333336
 theme_override_font_sizes/font_size = 5
 vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1234567894]
 position = Vector2(118, 78)
 
 [node name="Skeleton" parent="Enemies" unique_id=1234567895 instance=ExtResource("4")]
-position = Vector2(639, 293)
+position = Vector2(639, 328)
 scale = Vector2(3, 3)
 max_hp = 30
 attack = 5
@@ -93,6 +105,7 @@ offset_left = -21.666668
 offset_top = -24.0
 offset_right = 17.333332
 offset_bottom = -12.0
+metadata/_edit_use_anchors_ = true
 
 [node name="hplabel" type="Label" parent="Enemies/Skeleton" unique_id=1021156619]
 texture_filter = 1
@@ -105,7 +118,7 @@ horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="Orc" parent="Enemies" unique_id=1234567896 instance=ExtResource("5")]
-position = Vector2(639, 444)
+position = Vector2(639, 479)
 scale = Vector2(3, 3)
 max_hp = 50
 attack = 8
@@ -116,6 +129,7 @@ offset_left = -20.0
 offset_top = -28.0
 offset_right = 19.0
 offset_bottom = -16.0
+metadata/_edit_use_anchors_ = true
 
 [node name="hplabel" type="Label" parent="Enemies/Orc" unique_id=867738788]
 texture_filter = 1
@@ -126,9 +140,10 @@ offset_bottom = -28.999996
 theme_override_font_sizes/font_size = 5
 horizontal_alignment = 2
 vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="MiniBoss" parent="Enemies" unique_id=1654233816 instance=ExtResource("8_f4pi3")]
-position = Vector2(824, 383)
+position = Vector2(824, 418)
 scale = Vector2(4, 4)
 max_hp = 100
 attack = 10
@@ -139,6 +154,7 @@ offset_left = -21.5
 offset_top = -33.0
 offset_right = 17.5
 offset_bottom = -21.0
+metadata/_edit_use_anchors_ = true
 
 [node name="hplabel" type="Label" parent="Enemies/MiniBoss" unique_id=938695668]
 texture_filter = 1
