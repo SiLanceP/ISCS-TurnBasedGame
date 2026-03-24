@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://boloc60skoui4" path="res://scenes/knight.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bodgnvm31gwpk" path="res://scenes/healer.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://da4xu651t45m0" path="res://scenes/mage.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://b58b2mf1wlq6t" path="res://scenes/healthbar.tscn" id="3_4k1nj"]
+[ext_resource type="PackedScene" uid="uid://dtsqffqfppn7l" path="res://scenes/hpbar.tscn" id="3_f4pi3"]
 [ext_resource type="PackedScene" uid="uid://cn2nuvtbxjk1o" path="res://scenes/skeleton.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://bbfm8hisajjbg" path="res://scenes/orc.tscn" id="5"]
 [ext_resource type="Script" uid="uid://dc3p46fj3rf7g" path="res://scripts/battle_manager.gd" id="6"]
@@ -13,107 +13,142 @@
 script = ExtResource("6")
 
 [node name="Players" type="Node2D" parent="." unique_id=1234567891]
+position = Vector2(87, 4)
 
 [node name="Knight" parent="Players" unique_id=1234567892 instance=ExtResource("1")]
-position = Vector2(186, 285)
+position = Vector2(246, 347)
 scale = Vector2(3, 3)
-max_hp = 30
-defense = 5
+max_hp = 35
+defense = 9
 
-[node name="healthbar" parent="Players/Knight" unique_id=1358683867 instance=ExtResource("3_4k1nj")]
-position = Vector2(0.33333144, 11.333334)
+[node name="hpbar" parent="Players/Knight" unique_id=1932006064 instance=ExtResource("3_f4pi3")]
+offset_left = -18.666666
+offset_top = -23.333334
+offset_right = 20.333334
+offset_bottom = -11.333334
 
 [node name="hplabel" type="Label" parent="Players/Knight" unique_id=1121057189]
 texture_filter = 1
-offset_left = -14.333333
-offset_top = 12.666671
-offset_right = 25.666668
-offset_bottom = 35.66667
+offset_left = -18.333334
+offset_top = -47.333332
+offset_right = 21.666666
+offset_bottom = -24.333332
 theme_override_font_sizes/font_size = 5
+vertical_alignment = 2
 
 [node name="Healer" parent="Players" unique_id=1234567893 instance=ExtResource("2")]
-position = Vector2(105, 381)
+position = Vector2(141, 434)
 scale = Vector2(3, 3)
 max_hp = 20
-defense = 2
+attack = 10
+defense = 5
 
-[node name="healthbar" parent="Players/Healer" unique_id=1628275081 instance=ExtResource("3_4k1nj")]
-position = Vector2(0.33333334, 11.3333235)
+[node name="hpbar" parent="Players/Healer" unique_id=640082769 instance=ExtResource("3_f4pi3")]
+offset_left = -17.999998
+offset_top = -24.333332
+offset_right = 21.000002
+offset_bottom = -12.333332
 
 [node name="hplabel" type="Label" parent="Players/Healer" unique_id=480395820]
 texture_filter = 1
-offset_left = -14.0
-offset_top = 13.0
-offset_right = 26.0
-offset_bottom = 36.0
+offset_left = -16.0
+offset_top = -48.0
+offset_right = 24.0
+offset_bottom = -25.0
 theme_override_font_sizes/font_size = 5
+vertical_alignment = 2
 
 [node name="Mage" parent="Players" unique_id=1234567910 instance=ExtResource("3")]
-position = Vector2(182, 455)
+position = Vector2(242, 541)
 scale = Vector2(3, 3)
 max_hp = 25
 
-[node name="healthbar" parent="Players/Mage" unique_id=592700422 instance=ExtResource("3_4k1nj")]
-position = Vector2(-0.33333334, 12)
+[node name="hpbar" parent="Players/Mage" unique_id=1829930059 instance=ExtResource("3_f4pi3")]
+offset_left = -18.666666
+offset_top = -23.0
+offset_right = 20.333334
+offset_bottom = -11.0
 
 [node name="hplabel" type="Label" parent="Players/Mage" unique_id=1631789726]
 texture_filter = 1
-offset_left = -14.999999
-offset_top = 13.333333
-offset_right = 25.0
-offset_bottom = 36.333332
+offset_left = -17.333332
+offset_top = -46.333336
+offset_right = 22.666668
+offset_bottom = -23.333336
 theme_override_font_sizes/font_size = 5
+vertical_alignment = 2
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1234567894]
+position = Vector2(118, 78)
 
 [node name="Skeleton" parent="Enemies" unique_id=1234567895 instance=ExtResource("4")]
 position = Vector2(639, 293)
 scale = Vector2(3, 3)
+max_hp = 30
+attack = 5
+defense = 2
 
-[node name="healthbar" parent="Enemies/Skeleton" unique_id=227059549 instance=ExtResource("3_4k1nj")]
-position = Vector2(0.6666667, 13)
+[node name="hpbar" parent="Enemies/Skeleton" unique_id=702747223 instance=ExtResource("3_f4pi3")]
+offset_left = -21.666668
+offset_top = -24.0
+offset_right = 17.333332
+offset_bottom = -12.0
 
 [node name="hplabel" type="Label" parent="Enemies/Skeleton" unique_id=1021156619]
 texture_filter = 1
-offset_left = -23.333332
-offset_top = 14.666667
-offset_right = 16.666668
-offset_bottom = 37.666668
+offset_left = -25.333332
+offset_top = -48.333332
+offset_right = 14.666668
+offset_bottom = -25.333332
 theme_override_font_sizes/font_size = 5
 horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="Orc" parent="Enemies" unique_id=1234567896 instance=ExtResource("5")]
 position = Vector2(639, 444)
 scale = Vector2(3, 3)
+max_hp = 50
+attack = 8
+defense = 4
 
-[node name="healthbar" parent="Enemies/Orc" unique_id=183159016 instance=ExtResource("3_4k1nj")]
-position = Vector2(0, 11.666667)
+[node name="hpbar" parent="Enemies/Orc" unique_id=1805014067 instance=ExtResource("3_f4pi3")]
+offset_left = -20.0
+offset_top = -28.0
+offset_right = 19.0
+offset_bottom = -16.0
 
 [node name="hplabel" type="Label" parent="Enemies/Orc" unique_id=867738788]
 texture_filter = 1
-offset_left = -23.333332
-offset_top = 13.000001
-offset_right = 16.666668
-offset_bottom = 36.000004
+offset_left = -24.666666
+offset_top = -52.0
+offset_right = 15.333334
+offset_bottom = -28.999996
 theme_override_font_sizes/font_size = 5
 horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="MiniBoss" parent="Enemies" unique_id=1654233816 instance=ExtResource("8_f4pi3")]
 position = Vector2(824, 383)
 scale = Vector2(4, 4)
+max_hp = 100
+attack = 10
+defense = 5
 
-[node name="healthbar" parent="Enemies/MiniBoss" unique_id=843180594 instance=ExtResource("3_4k1nj")]
-position = Vector2(-2.0000105, 12.333333)
-scale = Vector2(1.6527781, 1)
+[node name="hpbar" parent="Enemies/MiniBoss" unique_id=1537048074 instance=ExtResource("3_f4pi3")]
+offset_left = -21.5
+offset_top = -33.0
+offset_right = 17.5
+offset_bottom = -21.0
 
 [node name="hplabel" type="Label" parent="Enemies/MiniBoss" unique_id=938695668]
 texture_filter = 1
-offset_left = -14.250004
-offset_top = 14.250003
-offset_right = 25.749996
-offset_bottom = 37.250004
+offset_left = -24.750004
+offset_top = -57.25
+offset_right = 15.249996
+offset_bottom = -34.25
 theme_override_font_sizes/font_size = 5
 horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="Control" type="VBoxContainer" parent="." unique_id=245317604]
 custom_minimum_size = Vector2(520, 280)

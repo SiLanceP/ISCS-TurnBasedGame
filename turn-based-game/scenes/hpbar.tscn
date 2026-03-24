@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dtsqffqfppn7l"]
+
+[ext_resource type="Texture2D" uid="uid://b4gmgteoh4csy" path="res://assets/Pixel Health Bar/04.png" id="1_ypbfl"]
+[ext_resource type="Script" uid="uid://d455x3j5mpnp" path="res://scripts/healthbar.gd" id="2_hwv8k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohcje"]
+atlas = ExtResource("1_ypbfl")
+region = Rect2(6, 147, 38, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63pbg"]
+atlas = ExtResource("1_ypbfl")
+region = Rect2(57, 133, 32, 5)
+
+[node name="hpbar" type="TextureProgressBar" unique_id=1932006064]
+offset_right = 39.0
+offset_bottom = 12.0
+value = 100.0
+texture_under = SubResource("AtlasTexture_ohcje")
+texture_progress = SubResource("AtlasTexture_63pbg")
+texture_progress_offset = Vector2(3, 2)
+script = ExtResource("2_hwv8k")

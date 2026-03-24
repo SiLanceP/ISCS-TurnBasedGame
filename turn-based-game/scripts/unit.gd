@@ -9,12 +9,16 @@ class_name Unit
 @export var crit_chance: float = 0.1
 @export var hit_chance: float = 0.9
 
+@onready var health_bar = $healthbar
+@onready var hp_label = $hplabel
+
 var hp: int
 var is_defending: bool = false
 var is_charging: bool = false
 var last_action: String = ""
 
 signal died
+signal health_changed(new_hp)
 
 func _ready() -> void:
 	hp = max_hp
@@ -23,18 +27,13 @@ func _ready() -> void:
 		$AnimatedSprite2D.play("idle")
 
 func _process(delta):
-	update_health_bar()
+	pass
 
 func update_health_bar():
-	var health_bar = get_node_or_null("healthbar")
-	
-	if health_bar and health_bar is AnimatedSprite2D:
-		var total_frames = health_bar.sprite_frames.get_frame_count("health")
-		var health_ratio = float(hp) / float(max_hp)
-		var target_frame = round(health_ratio * (total_frames - 1))
-		health_bar.frame = int(target_frame)
-	var hp_label = get_node_or_null("hplabel")
-	if hp_label and hp_label is Label:
+	if health_bar:
+		health_bar.max_value = max_hp
+		health_bar.value = hp
+	if hp_label:
 		hp_label.text = "%d/%d" % [hp, max_hp]
 
 func reset_state() -> void:
@@ -53,6 +52,8 @@ func apply_damage(amount, attacker = null):
 		dmg = int(ceil(dmg * 0.5))
 	
 	hp = max(hp - dmg, 0)
+	health_changed.emit(hp)
+	update_health_bar()
 	if dmg > 0:
 		var effect_scene = load("res://scenes/effects.tscn")
 		if effect_scene:
@@ -86,6 +87,8 @@ func apply_damage(amount, attacker = null):
 func heal(amount):
 	var h = max(amount, 0)
 	hp = min(hp + h, max_hp)
+	health_changed.emit(hp)
+	update_health_bar()
 	return h
 
 func get_effective_attack():
@@ -109,6 +112,8 @@ func perform_command(cmd_id, target, battle):
 		await defend(battle)
 	elif cmd_id == "charge":
 		await charge(battle)
+	elif cmd_id == "final_charge":
+		await final_charge(battle)
 	elif cmd_id == "power_strike":
 		await power_strike(target, battle)
 	elif cmd_id == "magic":
@@ -164,6 +169,11 @@ func charge(battle):
 	is_charging = true
 	battle.log_message("%s is charging up their next attack!" % unit_name)
 	last_action = "charge"
+	
+func final_charge(battle):
+	is_charging = true
+	battle.log_message("%s is at its final charge!" % unit_name)
+	last_action = "final_charge"
 
 func magic(target, battle):
 	if not target or not target.is_alive():
@@ -286,7 +296,7 @@ func ultimate_attack(battle): #aoe attack from the boss
 			if player.is_defending:
 				actual_dmg = int(ceil(actual_dmg * 0.5))
 			battle.log_message("%s took %d damage%s." % [player.unit_name, actual_dmg, (" (CRIT)" if crit else "")])
-			#player.apply_damage(dmg, self)
+			player.apply_damage(dmg, self)
 	await get_tree().create_timer(0.8).timeout
 	last_action = "ultimate"
 	is_charging = false

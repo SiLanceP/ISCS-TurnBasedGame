@@ -21,10 +21,13 @@ func choose_action(players: Array) -> Dictionary:
 			if not is_defending and randf() < 0.20:
 				return {"id": "defend", "target": self}
 			if charge_count > 0 or randf() < 0.8:
-				if charge_count < 3:
+				if charge_count < 2:
 					charge_count += 1
 					return {"id": "charge", "target": self}
-				else:
+				elif charge_count == 2:
+					charge_count += 1
+					return {"id": "final_charge", "target": self}
+				elif charge_count >= 3:
 					charge_count = 0 # Reset for next time
 					return {"id": "ultimate", "target": null}
 			return {"id": "attack", "target": target}
