@@ -219,3 +219,11 @@ offset_left = 576.0
 offset_top = 42.0
 offset_right = 776.0
 offset_bottom = 72.0
+
+[node name="speedbutton" type="Button" parent="." unique_id=770202651]
+texture_filter = 1
+offset_left = 1070.0
+offset_top = 20.0
+offset_right = 1130.0
+offset_bottom = 80.0
+text = "1x"

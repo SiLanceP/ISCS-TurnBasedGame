@@ -15,6 +15,9 @@ var players: Array = []
 var enemies: Array = []
 var _current_prompt_player: Node = null
 
+@onready var speed_button: Button = $speedbutton
+var is_fast_speed: bool = false
+
 func _ready() -> void:
 	randomize()
 
@@ -40,6 +43,9 @@ func _ready() -> void:
 		command_option.disabled = true
 	if target_option:
 		target_option.disabled = true
+	
+	if speed_button:
+		speed_button.pressed.connect(_on_speed_button_pressed)
 
 	start_battle()
 
@@ -53,10 +59,12 @@ func start_battle() -> void:
 func _take_turn() -> void:
 	print("Confirm button in _take_turn: ", confirm_button)
 	if check_victory():
+		Engine.time_scale = 1.0
 		log_message("Victory! All enemies defeated.")
 		emit_signal("battle_ended", "win")
 		return
 	if check_defeat():
+		Engine.time_scale = 1.0
 		log_message("Defeat... All party members have fallen.")
 		emit_signal("battle_ended", "lose")
 		return
@@ -249,3 +257,14 @@ func update_target_list(player, cmd) -> void:
 func get_target_by_option(group: Array) -> Unit:
 	var selected_idx = target_option.get_selected_id()
 	return target_option.get_item_metadata(selected_idx)
+
+func _on_speed_button_pressed() -> void:
+	is_fast_speed = !is_fast_speed
+	if is_fast_speed:
+		Engine.time_scale = 2.0
+		speed_button.text = "2x"
+		log_message("Speed Changed to 2x")
+	else:
+		Engine.time_scale = 1.0
+		speed_button.text = "1x"
+		log_message("Speed Changed to 1x")
